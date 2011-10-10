@@ -1,0 +1,17 @@
+{
+  "name": "lzw-async",
+  "description": "Asynchronous implementation of Lempel-Ziv-Welch (LZW) compression.",
+  "version": "0.1.1",
+  "author": "hiddentao",
+  "licenses":
+    [{
+      "type": "mit",
+      "url": "https://github.com/hiddentao/lzw-async/blob/master/LICENSE"
+    }],
+  "repository": {
+    "type" : "git",
+    "url": "http://github.com/hiddentao/lzw-async.git"
+  },
+  "engine" : [ "node >=0.1.102" ],
+  "main" : "./lzw-async.js"
+}
