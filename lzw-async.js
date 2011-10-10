@@ -25,15 +25,13 @@
  * Source: https://github.com/hiddentao/lzw-async
  */
 (function () {
-    // ECMAScript5 strict mode
-    "use strict";
     // global object
     var global = this;
 
+
     // attach to global object
-    global.LZWAsync = (function () {
-        var singletonInstance = {},
-            initialBitSize = 8,    // extended ASCII
+    (function (singletonInstance) {
+        var initialBitSize = 8,    // extended ASCII
             maxBitSize = 16,        // upto UTF-16
             StringBuilder,
             DictString,
@@ -250,7 +248,8 @@
                 nextCode = i;
 
                 // take next available code as the stream EOF marker
-                eofMarkerCode = nextCode++;
+                eofMarkerCode = nextCode;
+                nextCode++;
             };
 
             /**
@@ -283,7 +282,8 @@
                     if (null !== tree) {
                         dictString = tree;
                     } else {
-                        newNode = new DictString(newStr, nextCode++);
+                        newNode = new DictString(newStr, nextCode);
+                        nextCode++;
                         if (old_tree.str > dictString.str) {
                             old_tree.left = newNode;
                         } else {
@@ -328,9 +328,11 @@
                 
                 if (0 >= str.length) {
                     str = prefixStr + prefixStr.charAt(0);
-                    dictTable[nextCode++] = str;
+                    dictTable[nextCode] = str;
+                    nextCode++;
                 } else if (0 < prefixStr.length) {
-                    dictTable[nextCode++] = prefixStr + str.charAt(0);
+                    dictTable[nextCode] = prefixStr + str.charAt(0);
+                    nextCode++;
                 }
 
                 return {
@@ -414,7 +416,8 @@
                     result;
 
                 while (offset < input.length) {
-                    nextChar = input.charAt(offset++);
+                    nextChar = input.charAt(offset);
+                    offset++;
                     result = dictionary.findAdd(w, nextChar);
                     if (!result.found) {
                         if (0 <= w.code) {
@@ -573,9 +576,6 @@
             fnDoDecompress();
         }; // decompresss
 
-
-        return singletonInstance;
-
-    }()); // LZWAsync
+    }(typeof exports === 'undefined' ? global.LZWAsync = {} : exports)); // LZWAsync
 
 }());
