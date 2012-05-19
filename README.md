@@ -16,7 +16,7 @@ size.
 
 Minified library size is only ~4KB (~2KB when gzipped).
 
-## How to use
+## Install for browser
 
 The **index.html** file included contains a testing form for the algorithm as well as automated tests based
 on predefined data which is good at catching boundary case errors.
@@ -25,28 +25,56 @@ To use the algorithm in your own projects include the **lzw-async.js** file usin
 
     <script type="text/javascript" src="lzw-async.min.js"></script>
 
-To compress call:
 
-    LZWAsync.compress(...)
-
-To decompress call:
-
-    LZWAsync.decompress(...)
-
-## How to use with node.js
+## Install for node.js
 
 To use with node.js install the module:
 
     $ npm install lzw-async
 
-Note that when using it with node there is no `LZWAsync` namespace:
 
-    var lzw = require('lzw-async');
-    lzw.compress({
-            input : "test",
+## Examples
+
+To compress call:
+
+    LZWAsync.compress({
+            input : "rawtext",
             output : function(output) {
-                    console.log(output);
+                console.log(output);
             }
+    });
+
+To decompress call:
+
+    LZWAsync.decompress({
+            input : "compressedtext",
+            output : function(output) {
+                console.log(output);
+            }
+    });
+
+
+To receive progress updates:
+
+    LZWAsync.compress({
+            input : "rawtext",
+            output : function(output) {
+                console.log(output);
+            },
+            progress: function (percent) {
+                console.log(percent + " % done");
+            }
+    });
+
+If you already know which characters will appear in the raw input then you can tell LZWAsync to restrict the
+dictionary to only those characters, thereby improving the compression ratio:
+
+    LZWAsync.compress({
+            input : "rawtext",
+            output : function(output) {
+                console.log(output);
+            },
+            dict: 'abcdefghijklmnopqrstuvwxyz'
     });
 
 
