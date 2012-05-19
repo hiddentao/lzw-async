@@ -1,7 +1,7 @@
 {
   "name": "lzw-async",
   "description": "Asynchronous implementation of Lempel-Ziv-Welch (LZW) compression.",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "author": "Ramesh Nair <ram@hiddentao.com> (http://www.hiddentao.com/)",
   "contributors": [ "Ramesh Nair <ram@hiddentao.com> (http://www.hiddentao.com/)" ],
   "keywords": ["compression", "lzw", "async"],
