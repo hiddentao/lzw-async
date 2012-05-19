@@ -77,6 +77,9 @@ dictionary to only those characters, thereby improving the compression ratio:
             dict: 'abcdefghijklmnopqrstuvwxyz'
     });
 
+**Note:** be sure to pass in the same dictionary value when decompressing in order to get the original input back.
+
+
 
 ## API
 
