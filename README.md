@@ -108,7 +108,7 @@ Each method takes a single dictionary parameter which can contain the following 
 
 ## Known limitations and future work
 
-At the moment the compressor only accepts ASCII (upto 256) characters even though Javascript supports UTF-16 characters in its strings. For now, unless you can specify your required characters in the `dict` parameter, you should base64-encode your input prior to compression if it contains non-latin script. By base64 encoding you'll also be able to pass in a more limited dictionary character list and thereby gain greater compression ratios.
+At the moment the compressor only accepts ASCII (upto 256) characters even though Javascript supports UTF-16 characters in its strings. For now, unless you can specify your required characters in the `dict` parameter, you should base64-encode your input prior to compression if it contains non-latin script.
 
 There are also dictionary optimisations which can be made to decrease the amount of memory used by the dictionary though speed will be impacted as a result.
 
